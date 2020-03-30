@@ -1,8 +1,3 @@
-https://users.rust-lang.org/t/cannot-move-out-of-x-which-is-behind-a-shared-reference/33263
-
-##### rustc --explain E0507
-
-```
 You tried to move out of a value which was borrowed.
 
 This can also happen when using a type implementing `Fn` or `FnMut`, as neither
@@ -26,6 +21,7 @@ fn main() {
 
     x.borrow().nothing_is_true(); // error: cannot move out of borrowed content
 }
+```
 
 Here, the `nothing_is_true` method takes the ownership of `self`. However,
 `self` cannot be moved because `.borrow()` only provides an `&TheDarkKnight`,
@@ -38,6 +34,7 @@ you have three choices:
 
 Examples:
 
+```
 use std::cell::RefCell;
 
 struct TheDarkKnight;
@@ -51,11 +48,11 @@ fn main() {
 
     x.borrow().nothing_is_true(); // ok!
 }
-
+```
 
 Or:
 
-
+```
 use std::cell::RefCell;
 
 struct TheDarkKnight;
@@ -70,11 +67,11 @@ fn main() {
 
     x.nothing_is_true(); // ok!
 }
-
+```
 
 Or:
 
-
+```
 use std::cell::RefCell;
 
 #[derive(Clone, Copy)] // we implement the Copy trait
@@ -89,11 +86,11 @@ fn main() {
 
     x.borrow().nothing_is_true(); // ok!
 }
-
+```
 
 Moving a member out of a mutably borrowed struct will also cause E0507 error:
 
-
+```
 struct TheDarkKnight;
 
 impl TheDarkKnight {
@@ -112,11 +109,11 @@ fn main() {
 
     borrowed.knight.nothing_is_true(); // E0507
 }
-
+```
 
 It is fine only if you put something back. `mem::replace` can be used for that:
 
-
+```
 use std::mem;
 
 let mut cave = Batcave {
@@ -125,36 +122,7 @@ let mut cave = Batcave {
 let borrowed = &mut cave;
 
 mem::replace(&mut borrowed.knight, TheDarkKnight).nothing_is_true(); // ok!
-
-}
-
-struct Batcave {
-    knight: TheDarkKnight
-}
-
-fn main() {
-    let mut cave = Batcave {
-        knight: TheDarkKnight
-    };
-    let borrowed = &mut cave;
-
-    borrowed.knight.nothing_is_true(); // E0507
-}
-
-
-It is fine only if you put something back. `mem::replace` can be used for that:
-
-
-use std::mem;
-
-let mut cave = Batcave {
-    knight: TheDarkKnight
-};
-let borrowed = &mut cave;
-
-mem::replace(&mut borrowed.knight, TheDarkKnight).nothing_is_true(); // ok!
-
+```
 
 You can find more information about borrowing in the rust-book:
 http://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html
-```
