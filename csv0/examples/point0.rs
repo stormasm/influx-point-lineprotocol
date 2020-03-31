@@ -21,7 +21,7 @@ pub fn set_tagset() -> HashMap<String, String> {
     foo.clone()
 }
 
-fn lp_writer(filename: &str, vec: Vec<Point>) -> Result<(), Box<dyn Error>> {
+fn lp_writer(filename: &str, vec: &mut Vec<Point>) -> Result<(), Box<dyn Error>> {
     println!("{}", filename);
     for entry in vec.iter() {
         println!("{:?}\n", entry);
@@ -80,7 +80,7 @@ fn write_processor(dirin: String, dirout: String) -> Result<(), Box<dyn Error>> 
     let vec = dir_reader(dirin).unwrap();
     for name in vec {
         let filename = name.to_str().unwrap();
-        let vecp = csv_reader(filename);
+        let mut vecp = csv_reader(filename).unwrap();
 
         let stem = file_stem(filename).unwrap();
         let fn1 = create_filename(stem, "txt");
@@ -88,7 +88,7 @@ fn write_processor(dirin: String, dirout: String) -> Result<(), Box<dyn Error>> 
         let fn2 = Path::new(&dirout).join(fn1);
         let x = fn2.to_str().unwrap();
 
-        let _ = lp_writer(&x, vecp.unwrap());
+        let _ = lp_writer(&x, &mut vecp);
     }
     Ok(())
 }
