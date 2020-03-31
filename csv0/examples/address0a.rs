@@ -5,9 +5,8 @@ fn main() {
     let v1 = vec![a1];
 
     for t in v1.iter() {
-        println!("{:?}\n", t);
         println!("Name: {}", t.name);
-        println!("{:?}", t);
-        println!("{:?}", t.get_lineprotocol());
+        println!("Details: {:?}", t.details);
+        //println!("{:?}", t.get_lineprotocol());
     }
 }
