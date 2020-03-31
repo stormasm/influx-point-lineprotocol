@@ -9,4 +9,5 @@ fn main() {
     let t = Address::p1("michael".to_string(), details);
     println!("Name: {}", t.name);
     println!("{:?}", t);
+    println!("{:?}", t.get_lineprotocol());
 }
