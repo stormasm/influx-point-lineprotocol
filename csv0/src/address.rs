@@ -7,11 +7,10 @@ pub struct Address {
 }
 
 impl Address {
-    pub fn new(name: String) -> Address {
+    pub fn new(name: String, state: String, zip: String) -> Address {
         let mut details = HashMap::new();
-        details.insert("state".to_string(), "pa".to_string());
-        details.insert("zip".to_string(), "15132".to_string());
-        details.insert("age".to_string(), "49".to_string());
+        details.insert("state".to_string(), state);
+        details.insert("zip".to_string(), zip);
         Address { name, details }
     }
 }
