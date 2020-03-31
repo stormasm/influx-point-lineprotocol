@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 use std::fmt::Write as FmtWrite;
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Point {
     pub measurement: String,
     pub tagset: HashMap<String, String>,
@@ -10,18 +10,18 @@ pub struct Point {
 }
 
 impl Point {
-    pub fn set_fieldset(volume: String, close: String) -> HashMap<String, String> {
-        let mut foo = HashMap::new();
-        foo.insert("volume".to_string(), volume);
-        foo.insert("close".to_string(), close);
-        foo.clone()
-    }
-
-    pub fn set_tagset() -> HashMap<String, String> {
-        let mut foo = HashMap::new();
-        foo.insert("frequency".to_string(), "daily".to_string());
-        foo.insert("type".to_string(), "close".to_string());
-        foo.clone()
+    pub fn new(
+        measurement: String,
+        tagset: HashMap<String, String>,
+        fieldset: HashMap<String, String>,
+        timestamp: String,
+    ) -> Point {
+        Point {
+            measurement,
+            tagset,
+            fieldset,
+            timestamp,
+        }
     }
 
     pub fn get_lineprotocol(self) -> Result<String, Box<dyn std::error::Error>> {
