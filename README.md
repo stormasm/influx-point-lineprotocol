@@ -5,7 +5,11 @@ https://users.rust-lang.org/t/cannot-move-out-of-x-which-is-behind-a-shared-refe
 
 https://users.rust-lang.org/t/pass-mutable-reference-to-vector-as-argument/22130
 
-###### References
+##### Reddit
+
+https://www.reddit.com/r/rust/comments/5s09m7/struct_members_referencing_other_members/https://www.reddit.com/r/rust/comments/5s09m7/struct_members_referencing_other_members/
+
+##### References
 
 https://facility9.com/2016/04/the-basics-of-rust-structs/
 
