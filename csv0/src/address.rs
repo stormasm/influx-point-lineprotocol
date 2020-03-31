@@ -13,4 +13,8 @@ impl Address {
         details.insert("zip".to_string(), zip);
         Address { name, details }
     }
+
+    pub fn p1(name: String, details: HashMap<String, String>) -> Address {
+        Address { name, details }
+    }
 }
