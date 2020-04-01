@@ -14,8 +14,11 @@ fn main() {
     details.insert("zip".to_string(), "87110".to_string());
 
     let h1 = Human::p1(details);
+
     let v1 = vec![h1];
     for t in v1.iter() {
         println!("{:?}", getlp(*t));
     }
+
+    println!("{:?}", getlp(h1));
 }
