@@ -13,6 +13,6 @@ fn main() {
     details.insert("state".to_string(), "nm".to_string());
     details.insert("zip".to_string(), "87110".to_string());
 
-    let t = Human::p1(details);
-    println!("{:?}", getlp(t));
+    let h1 = Human::p1(details);
+    println!("{:?}", getlp(h1));
 }
