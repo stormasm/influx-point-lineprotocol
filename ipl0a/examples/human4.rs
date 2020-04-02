@@ -19,8 +19,10 @@ fn main() {
 
     let v1 = vec![&h1];
     for t in v1.iter() {
+        println!("{:?}", t.getlp());
         println!("{:?}", getlp(t));
     }
 
     println!("{:?}", &h1.getlp());
+    println!("{:?}", getlp(&h1));
 }

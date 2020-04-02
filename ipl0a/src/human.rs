@@ -10,7 +10,7 @@ impl Human {
         Human { details }
     }
 
-    pub fn getlp(self) -> String {
+    pub fn getlp(&self) -> String {
         let mut s = String::new();
         s.push_str(self.details.get("state").unwrap());
         s.push_str(", country!");
