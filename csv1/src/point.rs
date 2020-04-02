@@ -28,7 +28,7 @@ impl Point {
         let mut s = String::new();
         write!(&mut s, "{},", self.measurement).expect("error in measurement");
 
-        for (key, val) in self.tagset {
+        for (key, val) in &self.tagset {
             write!(&mut s, "{}={},", key, val).expect("error in tagset");
         }
 
@@ -40,7 +40,7 @@ impl Point {
         // add in a space between the tagset and the fieldset
         write!(&mut s1, "{}", " ".to_string()).expect("error in space");
 
-        for (key, val) in self.fieldset {
+        for (key, val) in &self.fieldset {
             write!(&mut s1, "{}={},", key, val).expect("error in fieldset");
         }
 

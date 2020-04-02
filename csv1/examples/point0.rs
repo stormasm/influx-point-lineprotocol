@@ -24,9 +24,9 @@ pub fn set_tagset() -> HashMap<String, String> {
 fn lp_writer(filename: &str, vec: &mut Vec<Point>) -> Result<(), Box<dyn Error>> {
     println!("{}", filename);
     for entry in vec.iter() {
-        println!("{:?}\n", entry);
-        //let lp = entry.get_lineprotocol();
-        //println!("{:?}\n", lp);
+        //println!("{:?}\n", entry);
+        let lp = entry.get_lineprotocol();
+        println!("{:?}\n", lp.unwrap());
     }
     Ok(())
 }
