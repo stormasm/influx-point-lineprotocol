@@ -11,3 +11,6 @@ and the simple solution I came up with to solve it.
 
 human4.rs takes care of calling both getlp() inside the
 struct and inside the file human4.rs.
+
+human3.rs just calls getlp() inside the file human.rs BUT NOT
+inside the struct.
