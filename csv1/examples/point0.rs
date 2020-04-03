@@ -1,8 +1,9 @@
 use std::collections::HashMap;
 use std::error::Error;
 use std::fs;
+use std::fs::File;
+use std::io::Write;
 use std::path::{Path, PathBuf};
-
 use chrono::prelude::*;
 use csv::Reader;
 use ipl::point::Point;
@@ -23,10 +24,11 @@ pub fn set_tagset() -> HashMap<String, String> {
 
 fn lp_writer(filename: &str, vec: &mut Vec<Point>) -> Result<(), Box<dyn Error>> {
     println!("{}", filename);
+    let mut output = File::create(filename)?;
     for entry in vec.iter() {
-        //println!("{:?}\n", entry);
         let lp = entry.get_lineprotocol();
-        println!("{:?}\n", lp.unwrap());
+        write!(output, "{}", lp.unwrap())?;
+        write!(output, "{}", "\n")?;
     }
     Ok(())
 }
@@ -48,7 +50,6 @@ fn csv_reader(filename: &str) -> Result<Vec<Point>, Box<dyn Error>> {
         };
         vecp.push(point);
     }
-    //println!("{:?}\n", vecp);
     Ok(vecp)
 }
 
@@ -84,7 +85,6 @@ fn write_processor(dirin: String, dirout: String) -> Result<(), Box<dyn Error>> 
 
         let stem = file_stem(filename).unwrap();
         let fn1 = create_filename(stem, "txt");
-
         let fn2 = Path::new(&dirout).join(fn1);
         let x = fn2.to_str().unwrap();
 
