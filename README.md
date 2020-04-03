@@ -4,4 +4,4 @@ and writing them out to influxdb line protocol format...
 
 ipl0a is a set of struct tutorials for rust.
 
-[ref](./ref.md) is a set of references on rust structs, ownership, and borrowing.
+[doc](./doc.md) is a set of references on rust structs, ownership, and borrowing.
