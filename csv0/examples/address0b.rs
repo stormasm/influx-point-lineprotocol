@@ -1,7 +1,7 @@
 use ipl::address::Address;
 use std::fmt::Write as FmtWrite;
 
-pub fn get_lineprotocol(myadr: Address) -> Result<String, Box<dyn std::error::Error>> {
+pub fn get_lineprotocol(myadr: &Address) -> Result<String, Box<dyn std::error::Error>> {
     let mut s = String::new();
     write!(&mut s, "{},", myadr.name).expect("error in measurement");
     Ok(s)
@@ -15,6 +15,6 @@ fn main() {
         println!("Name: {}", t.name);
         println!("Details: {:?}", t.details);
         //println!("{:?}", t.get_lineprotocol());
-        println!("Protocol: {:?}", get_lineprotocol(*t));
+        println!("Protocol: {:?}", get_lineprotocol(t));
     }
 }
