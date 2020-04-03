@@ -1,7 +1,10 @@
 
-csv1 is the process of taking in csv files
+### csv1
+
+is the process of taking in csv files
 and writing them out to influxdb line protocol format...
 
-ipl0a is a set of struct tutorials for rust.
+### ipl0a 
+is a set of struct tutorials for rust.
 
 [doc](./doc.md) is a set of references on rust structs, ownership, and borrowing.
