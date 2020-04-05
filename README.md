@@ -1,4 +1,6 @@
 
+[Read this first !](https://github.com/stormasm/influx-point-lineprotocol/tree/master/csv1/examples)
+
 ### csv1
 
 is the process of taking in csv files
