@@ -18,7 +18,7 @@ pub fn set_fieldset(volume: String, close: String) -> HashMap<String, String> {
 pub fn set_tagset() -> HashMap<String, String> {
     let mut foo = HashMap::new();
     foo.insert("frequency".to_string(), "daily".to_string());
-    foo.insert("type".to_string(), "close".to_string());
+    foo.insert("type".to_string(), "quote".to_string());
     foo.clone()
 }
 
