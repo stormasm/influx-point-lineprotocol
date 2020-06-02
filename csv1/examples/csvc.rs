@@ -8,8 +8,6 @@ use std::path::{Path, PathBuf};
 use csv::Reader;
 use ipl::point::Point;
 
-//use chrono::prelude::*;
-//use chrono::offset::{TimeZone,Utc};
 use chrono::{TimeZone, Utc};
 
 pub fn set_fieldset(volume: String, close: String) -> HashMap<String, String> {
