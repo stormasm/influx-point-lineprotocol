@@ -88,7 +88,7 @@ fn write_processor(dirin: String, dirout: String) -> Result<(), Box<dyn Error>> 
         let mut vecp = csv_reader(filename).unwrap();
 
         let stem = file_stem(filename).unwrap();
-        let fn1 = create_filename(stem, "txt");
+        let fn1 = create_filename(stem, "csv");
         let fn2 = Path::new(&dirout).join(fn1);
         let x = fn2.to_str().unwrap();
 
@@ -99,6 +99,6 @@ fn write_processor(dirin: String, dirout: String) -> Result<(), Box<dyn Error>> 
 
 fn main() {
     let dirin = String::from("./examples/data/csv");
-    let dirout = String::from("./examples/data/out");
+    let dirout = String::from("./examples/data/csv1");
     let _ = write_processor(dirin, dirout);
 }
