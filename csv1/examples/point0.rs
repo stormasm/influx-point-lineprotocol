@@ -4,9 +4,13 @@ use std::fs;
 use std::fs::File;
 use std::io::Write;
 use std::path::{Path, PathBuf};
-use chrono::prelude::*;
+
 use csv::Reader;
 use ipl::point::Point;
+
+//use chrono::prelude::*;
+//use chrono::offset::{TimeZone,Utc};
+use chrono::{TimeZone, Utc};
 
 pub fn set_fieldset(volume: String, close: String) -> HashMap<String, String> {
     let mut foo = HashMap::new();
